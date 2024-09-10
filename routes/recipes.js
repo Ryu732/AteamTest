@@ -61,9 +61,7 @@ router.get('/', function (req, res, next) {
 		selectsql,
 		(error, results) => {
 			res.status(200).json({
-				recipes: [
-					...results
-				]
+				recipes: results
 			});
 		}
 	);
@@ -82,9 +80,7 @@ router.get('/:id', function (req, res, next) {
 		(error, results) => {
 			res.status(200).json({
 				message: 'Recipe details by id',
-				recipes: [
-					...results
-				]
+				recipes: results
 			});
 		}
 	);
