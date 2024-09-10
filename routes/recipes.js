@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
+// envファイル設定
+require('dotenv').config();
+
 // MySQL
 const mysql = require('mysql');
 const connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
+
 
 // レシピの追加
 router.post('/', function (req, res, next) {
@@ -44,7 +48,7 @@ router.post('/', function (req, res, next) {
 						}
 						res.status(200).json({
 							message: 'Recipe successfully created!',
-							recipe: results[0]
+							recipe: [results[0]]
 						});
 					}
 				);
@@ -78,9 +82,10 @@ router.get('/:id', function (req, res, next) {
 	connection.query(
 		selectsql, [id],
 		(error, results) => {
+			console.log([results[0]]);
 			res.status(200).json({
 				message: 'Recipe details by id',
-				recipes: results
+				recipes: [results[0]]
 			});
 		}
 	);
