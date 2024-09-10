@@ -11,7 +11,7 @@ const connection = mysql.createConnection({
 });
 
 // レシピの追加
-router.post('/recipes', function (req, res, next) {
+router.post('/', function (req, res, next) {
 	// リクエストのパラメータを取得
 	const title = req.body.title;
 	const making_time = req.body.making_time;
@@ -59,7 +59,7 @@ router.post('/recipes', function (req, res, next) {
 
 });
 
-router.get('/recipes', function (req, res, next) {
+router.get('/', function (req, res, next) {
 	const selectsql = 'SELECT * FROM recipes';
 
 	connection.query(
@@ -74,7 +74,7 @@ router.get('/recipes', function (req, res, next) {
 	);
 });
 
-router.get('/recipes/:id', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
 	const selectsql = 'SELECT * FROM recipes WHERE id = ?';
 	// idをパラメータから取得(ない場合は0)
 	const id = req.params.id;
@@ -95,7 +95,7 @@ router.get('/recipes/:id', function (req, res, next) {
 	);
 });
 
-router.patch('/recipes/:id', function (req, res, next) {
+router.patch('/:id', function (req, res, next) {
 	// idをパラメータから取得(ない場合は0)
 	const id = req.params.id;
 	if (id == null) {
@@ -126,7 +126,7 @@ router.patch('/recipes/:id', function (req, res, next) {
 
 });
 
-router.delete('/recipes/:id', function (req, res, next) {
+router.delete('/:id', function (req, res, next) {
 	// idをパラメータから取得(ない場合は0)
 	const id = req.params.id;
 	if (id == null) {
