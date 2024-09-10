@@ -82,10 +82,9 @@ router.get('/:id', function (req, res, next) {
 	connection.query(
 		selectsql, [id],
 		(error, results) => {
-			console.log([results[0]]);
 			res.status(200).json({
 				message: 'Recipe details by id',
-				recipes: [results[0]]
+				recipe: [results[0]]
 			});
 		}
 	);
