@@ -3,12 +3,7 @@ var router = express.Router();
 
 // MySQL
 const mysql = require('mysql');
-const connection = mysql.createConnection({
-	host: 'localhost',
-	user: 'root',
-	password: '設定したパスワード',
-	database: 'list_app'
-});
+const connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL);
 
 // レシピの追加
 router.post('/', function (req, res, next) {
